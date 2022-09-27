@@ -23,7 +23,7 @@ app.get('/emojis', async (req, res) => {
 
 app.get('/emojis/:name', async (req, res) => {
     try {
-        const db_res = await pool.query("SELECT * FROM emojis WHERE emoji_desc = $1 OR emoji_face = $1 ORDER BY id", [req.params.name]);
+        const db_res = await pool.query("SELECT * FROM emojis WHERE emoji_desc ILIKE $1 OR emoji_face = $1 ORDER BY id", ['%' + req.params.name + '%']);
         res.status(200).send(db_res.rows);
     } catch (err) {
         console.log(`GET param was not successfull: ${err}`);

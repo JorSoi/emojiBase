@@ -33,8 +33,11 @@ const searchEmoji = async () => {
         const response = await fetch(`http://localhost:3000/emojis/${encodeURI(searchBar.value)}`)
         if (response.ok && searchBar.value != '') {
             const data = await response.json();
+            console.log(data);
             parentNode.innerHTML = "";
-            parentNode.innerHTML = `<div class="emoji-container"><p>${data[0].emoji_face}</p><h5>${data[0].emoji_desc}</h5></div>`;
+            for(let i = 0; i < data.length; i++) {
+                parentNode.innerHTML += `<div id="${data[i].id}"class="emoji-container" onclick="openEditor()"><p>${data[i].emoji_face}</p><h5>${data[i].emoji_desc}</h5></div>`;
+            } 
         } else {
             getAllEmojis();
         }
@@ -141,6 +144,25 @@ function closePopups () {
     editorPopup.style.display = "none";
     creatorPopup.style.display = "none";
 }
+
+// Execute a function when the user presses a key on the keyboard
+searchBar.addEventListener("keypress", function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    searchEmoji();
+  }
+});
+
+
+
+
+
+
+
+
 
 
 getAllEmojis();
