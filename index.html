@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmojiBase</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <script src="https://kit.fontawesome.com/2df3280a6e.js" crossorigin="anonymous"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="header-wrapper">
+        <h1>EmojiBase</h1>
+        <p>Welcome to EmojiBase! This is your own playground for searching, creating, editing or even deleting emojis. Have a nice time and enjoy!</p>
+    </div>
+    <div class="searchbar-wrapper">
+        <form>
+            <input id="searchBar" type="text" placeholder="Search emojis" autocomplete="off">
+            <button id="searchButton" type="button" onclick="searchEmoji()"><i class="fa fa-search fa-lg"></i></button>
+        </form>
+    </div>
+    <div class="content-section">
+        <div class="content-frame">
+            <div id="content-wrapper">
+    
+
+                <!-- Emoji Content gets inserted here -->
+
+                
+            </div>
+            <div class="adder-wrapper">
+                <button id="addButton" onclick="openCreator()">Add Emoji</button>
+            </div>
+        </div>  
+    </div>
+    <div id="editorPopup" class="overlay edit">
+        <div id="" class="popup-wrapper">
+            <button id="closeIcon" onclick="closePopups()"><i class="fa-solid fa-xmark fa-2x "></i></button>
+            <form class="popup-emoji-container change">
+                <input id="changeEmoji" type="text" value="🙌🏼" maxlength="3" autocomplete="off">
+                <br>
+                <input id="changeDescription" type="text" value="Happy Emoji" maxlength="21" placeholder="EM" autocomplete="off">
+            </form>
+            <div class="button-wrapper">
+                <div class="button-container"></div>
+                    <button id="saveButton">Save Changes</button>
+                    <button id="deleteButton" onclick="deleteEmoji()">Delete Emoji</button>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <div id="creatorPopup" class="overlay create">
+        <div class="popup-wrapper">
+            <button id="closeIcon" onclick="closePopups()"><i class="fa-solid fa-xmark fa-2x "></i></button>
+            <form class="popup-emoji-container change">
+                <input id="createEmoji" type="text" placeholder="-" maxlength="3" autocomplete="off">
+                <br>
+                <input id="createDescription" type="text"  placeholder="Emoji Name" maxlength="21"  autocomplete="off">
+            </form>
+            <div class="button-wrapper">
+                <button id="createButton" onclick="postEmoji()">Create Emoji</button>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

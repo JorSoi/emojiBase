@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Biotif';
+}
+
+body {
+    background-color: #FFF5EC;
+    width: 100%;
+    height: 100%;
+}
+
+.header-wrapper {
+    margin-top: 30px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 55px;
+    line-height: 78px;
+    text-align: center;
+}
+
+.header-wrapper p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 34px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.32);
+    max-width: 710px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.searchbar-wrapper {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.searchbar-wrapper form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 0 2%;
+}
+
+#searchBar {
+    max-width: 400px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.119);
+    outline: none;
+}
+
+#searchBar[type=text] {
+    text-align: center;
+    font-size: 15px;
+  }
+
+#searchButton {
+    height: 50px;
+    width: 50px !important;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.102);
+    border: 1px solid rgba(0, 0, 0, 0.033);
+    margin-left: 10px;
+}
+
+#searchButton:active {
+    background-color: rgba(0, 0, 0, 0.177);
+}
+
+.content-section {
+    display: flex;
+    justify-content: center;
+}
+
+.content-frame {
+    background-color: rgba(217, 217, 217, 0.291);
+    width: 818px;
+    max-height: 500px;
+    padding: 7px;
+    margin-top: 40px;
+    overflow: hidden;
+    overflow-y: scroll;
+    border-radius: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.emoji-container {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    padding: 15px 0px;
+    border-radius: 8px;
+    margin: 7px;
+    cursor: pointer;
+}
+
+.emoji-container:active {
+    background-color: rgb(244, 244, 244);
+}
+
+.emoji-container p {
+    font-size: 50px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.emoji-container h5 {
+    text-align: center;
+    pointer-events: none;
+}
+
+.adder-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 7px;
+}
+
+#addButton{
+    width: 150px;
+    height: 50px;
+    border: none; 
+    background-color: rgba(217, 217, 217, 0.52);
+    border-radius: 100px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+
+#addButton:active{
+    background-color: rgba(0, 0, 0, 0.093);
+}
+
+.overlay {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.605);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.popup-wrapper {
+    width: 350px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.popup-emoji-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#changeEmoji[type=text], #createEmoji[type=text] {
+    font-size: 80px;
+    text-align: center;
+}
+
+#changeEmoji, #createEmoji {
+    width: 100px;
+    border: none;
+    background-color: rgba(128, 128, 128, 0.103);
+    border-radius: 10px;
+}
+
+#changeDescription, #createDescription {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    width: 200px;
+    border: none;
+    background-color: rgba(128, 128, 128, 0.103);
+    border-radius: 10px;
+    padding: 10px 0px;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#saveButton, #deleteButton, #createButton {
+    width: 150px;
+    height: 50px;
+    border: none; 
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+
+#saveButton {
+    margin-right: 2px;
+    color: rgba(56, 49, 255, 0.739);
+    border: 2px solid rgba(56, 49, 255, 0.739);
+    background-color: transparent;
+    
+}
+
+#saveButton:active {
+    border: 2px solid rgba(56, 49, 255, 0.739);
+    color: rgb(255, 255, 255);
+    background-color: rgba(56, 49, 255, 0.739);
+}
+
+#deleteButton {
+    margin-left: 2px;
+    border: 2px solid rgb(255, 49, 49);
+    color: rgb(255, 0, 0);
+    background-color: rgba(255, 0, 0, 0.124);
+}
+
+#deleteButton:active {
+    border: 2px solid rgb(255, 49, 49);
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 49, 49);
+}
+
+#closeIcon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+
+
+
+#createButton {
+    border: 2px solid rgb(42, 221, 87);
+    color: rgb(42, 221, 87);
+    background-color: rgba(42, 221, 87, 0.284);
+}
+
+#createButton:active {
+    border: 2px solid rgb(42, 221, 87);
+    color: rgb(255, 255, 255);
+    background-color: rgb(20, 216, 43);
+}
+
+.failedSearch {
+    width: 100%;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.35);
+}
