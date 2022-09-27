@@ -38,13 +38,13 @@
         <div id="" class="popup-wrapper">
             <button id="closeIcon" onclick="closePopups()"><i class="fa-solid fa-xmark fa-2x "></i></button>
             <form class="popup-emoji-container change">
-                <input id="changeEmoji" type="text" value="🙌🏼" maxlength="3" autocomplete="off">
+                <input id="changeEmoji" type="text" value="-" maxlength="3" autocomplete="off">
                 <br>
-                <input id="changeDescription" type="text" value="Happy Emoji" maxlength="21" placeholder="EM" autocomplete="off">
+                <input id="changeDescription" type="text" value="Happy Emoji" maxlength="21" placeholder="Emoji Name" autocomplete="off">
             </form>
             <div class="button-wrapper">
                 <div class="button-container"></div>
-                    <button id="saveButton">Save Changes</button>
+                    <button id="saveButton" onclick="updateEmoji()">Save Changes</button>
                     <button id="deleteButton" onclick="deleteEmoji()">Delete Emoji</button>
                 </div>  
             </div>
@@ -56,7 +56,7 @@
             <form class="popup-emoji-container change">
                 <input id="createEmoji" type="text" placeholder="-" maxlength="3" autocomplete="off">
                 <br>
-                <input id="createDescription" type="text"  placeholder="Emoji Name" maxlength="21"  autocomplete="off">
+                <input id="createDescription" type="text" placeholder="Emoji Name" maxlength="21"  autocomplete="off">
             </form>
             <div class="button-wrapper">
                 <button id="createButton" onclick="postEmoji()">Create Emoji</button>

@@ -18,9 +18,8 @@ const getAllEmojis = async () => {
             const data = await response.json();
             parentNode.innerHTML = "";
             for(let i = 0; i < data.length; i++) {
-                parentNode.innerHTML += `<div id="${data[i].id}"class="emoji-container" onclick="openEditor()"><p>${data[i].emoji}</p><h5>${data[i]['description']}</h5></div>`;
-            }
-            
+                parentNode.innerHTML += `<div id="${data[i].id}"class="emoji-container" onclick="openEditor()"><p>${data[i].emoji_face}</p><h5>${data[i].emoji_desc}</h5></div>`;
+            }            
         } else {
             throw new Error('We can\'t create a connection to the api.');
         }
@@ -35,11 +34,9 @@ const searchEmoji = async () => {
         if (response.ok && searchBar.value != '') {
             const data = await response.json();
             parentNode.innerHTML = "";
-            parentNode.innerHTML = `<div class="emoji-container"><p>${data[0].emoji}</p><h5>${data[0].description}</h5></div>`;
+            parentNode.innerHTML = `<div class="emoji-container"><p>${data[0].emoji_face}</p><h5>${data[0].emoji_desc}</h5></div>`;
         } else {
             getAllEmojis();
-            // parentNode.innerHTML = "";
-            // parentNode.innerHTML = `<p class="failedSearch">We couldn't find ${searchBar.value}:(.</p>`
         }
     } catch (err) {
         console.log(err);
@@ -50,24 +47,45 @@ const searchEmoji = async () => {
 
 
 const openEditor = async () => {
+    console.log(event.target.id);
     const response = await fetch(`http://localhost:3000/emojis/edit/${event.target.id}`);
     if (response.ok) {
         const data = await response.json();
-        changeEmoji.value = data.emoji;
-        changeDescription.value = data.description;
-        popUpWrapper.id = data.id;
+        changeEmoji.value = data[0].emoji_face;
+        changeDescription.value = data[0].emoji_desc;
+        popUpWrapper.id = data[0].id;
     }
     editorPopup.style.display = "flex";
 }
 
-
+const updateEmoji = async () => {
+    const jsBody = {
+        emoji_desc: changeDescription.value,
+        emoji_face: changeEmoji.value
+    }
+    try {
+        const response = await fetch(`http://localhost:3000/emojis/edit/${popUpWrapper.id}`, {
+            method: 'PUT',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(jsBody)
+        });
+        if (response.ok) {
+            getAllEmojis();
+            closePopups();
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 
 
 const postEmoji = async () => {
     let jsBody = {
-        newEmoji: createEmoji.value,
-        newDescription: createDescription.value
+        emoji_face: createEmoji.value,
+        emoji_desc: createDescription.value
     }
     try {
         const response = await fetch('http://localhost:3000/emojis', {
@@ -78,7 +96,7 @@ const postEmoji = async () => {
             body: JSON.stringify(jsBody)
         })
         if (response.ok) {
-            const data = await response.json();
+            console.log(response.status)
             closePopups();
             getAllEmojis();
             resetCreatorValues();
@@ -92,10 +110,12 @@ const postEmoji = async () => {
 
 const deleteEmoji = async () => {
     try {
-        const response = await fetch(`http://localhost:3000/emojis/delete/` + popUpWrapper.id);
+        const response = await fetch(`http://localhost:3000/emojis/${popUpWrapper.id}`, {
+            method: 'DELETE'
+        });
         if (response.ok) {
-            const data = await response.json();
-            console.log(response)
+            getAllEmojis();
+            closePopups();
         }
         
     } catch (err) {
@@ -124,6 +144,7 @@ function closePopups () {
 
 
 getAllEmojis();
+
 
 
 
